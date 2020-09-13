@@ -1,3 +1,4 @@
+//Look at ask.js for a more streamlined way to do this using readline
 const questions = [
   "What is your name?",
   "What would you rather be doing?",
@@ -22,4 +23,13 @@ process.stdin.on('data', data => {
   else {
     process.exit();
   }
+});
+
+process.on('exit', () => {
+  const [name, activity, lang] = answers;
+
+  console.log(`
+    Thank you for your answers.
+    Go ${activity} ${name}. You can write ${lang} code later!!!
+  `)
 });
