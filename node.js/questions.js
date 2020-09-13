@@ -1,4 +1,4 @@
-//Look at ask.js for a more streamlined way to do this using readline
+//Look at ask.js/question-2.js for a more streamlined way to do this using readline
 const questions = [
   "What is your name?",
   "What would you rather be doing?",
