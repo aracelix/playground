@@ -1,19 +1,27 @@
+var LogStrategy = require('./LogStrategy');
+var configs = require('./config.json');
+
 class Logger {
 
-    constructor() {
+    constructor(strategy='toConsole') {
         this.logs = [];
+        this.strategy = LogStrategy[strategy];
     }
 
     get count() {
         return this.logs.length
     }
 
+    changeStrategy(newStrategy) {
+      this.strategy = LogStrategy[newStrategy];
+    }
+
     log(message) {
         const timestamp = new Date().toISOString()
         this.logs.push({ message, timestamp })
-        console.log(`${timestamp} - ${message}`)
+        this.strategy(timestamp, message);
     }
 
 }
 
-module.exports = new Logger();
+module.exports = new Logger(configs.logs.strategy);
